@@ -1,0 +1,327 @@
+@font-face {
+    font-family: "Proxima Nova";
+    src: url(../fonts/ProximaNova/proximanova_regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Proxima Nova";
+    src: url(../fonts/ProximaNova/proximanova_bold.otf);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Proxima Nova";
+    src: url(../fonts/ProximaNova/proximaNovaLight.ttf);
+    font-weight: 300;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    background-image: url(../images/clouds-cold-dark-540518.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+.bg_color_overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 60%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+input {
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    max-width: 200px;
+    height: 40px;
+    color: rgb(110, 116, 124);
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+    padding: 12px 15px;
+    transition: all 0.7s;
+}
+
+
+a {
+    font-size: 11px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+    line-height: 1.2;
+}
+
+button {
+    border-radius: 4px;
+    background-image: -moz-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    background-image: -webkit-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    background-image: -ms-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    /*width: 80px;*/
+    height: 40px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.308;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    color: #fff;
+    padding: 12px 20px;
+}
+
+button:hover {
+    border-radius: 4px;
+    background-image: -moz-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    background-image: -webkit-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    background-image: -ms-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    box-shadow: 0px 1px 17px 0px rgba(43, 160, 234, 0.66);
+}
+
+.outline-btn {
+    height: 40px;
+    background: transparent;
+    font-size: 13px;
+    line-height: 1.308;
+    position: relative;
+    overflow: hidden;
+}
+
+.outline-btn .btn_outline {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-width: 2px;
+    border-color: #fff;
+    border-style: solid;
+    border-radius: 4px;
+    background: transparent;
+    opacity: 1;
+
+}
+
+.outline-btn:hover .btn_outline {
+    opacity: 0;
+}
+
+
+h1 {
+    font-size: 38px;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    color: #83A6E4FF;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 36px;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    font-weight: 300;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 992px) {
+
+    .container {
+        max-width: 960px;
+    }
+
+}
+
+.header {
+    padding: 34px 0;
+}
+
+.header_content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_log_in_form_container form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: calc(-13px * 2);
+}
+
+.header_log_in_form_container .forgot_password_link {
+    margin-top: 13px;
+    display: block;
+}
+
+.header_log_in_form_container .input_container {
+    margin-right: 13px;
+    position: relative;
+}
+
+.header_log_in_form_container .input_container .invalid_message {
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 4px;
+    background-color: #E22A32FF;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    /*height: 35px;*/
+    padding: 11px 10px 13px;
+    margin-top: 5px;
+    pointer-events: none;
+    /*display: none;*/
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.header_log_in_form_container .input_container input:invalid + .invalid_message {
+    /*display: block;*/
+    opacity: 1;
+}
+
+.form_step_slider {
+    width: 300px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    /*
+    scroll-snap-points-x: repeat(300px);
+    scroll-snap-type: mandatory;
+    */
+}
+
+.slides::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.slides::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+}
+
+.slides::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.slides > div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 300px;
+    height: 300px;
+    margin-right: 50px;
+    border-radius: 10px;
+    background: #eee;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+}
+
+.slides > div:target {
+    /*   transform: scale(0.8); */
+}
+
+.author-info {
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 0.75rem;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.author-info a {
+    color: white;
+}
+
+.form_step_slider img {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.form_step_slider > a {
+    display: inline-flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: white;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 0 0.5rem 0;
+    position: relative;
+}
+
+.form_step_slider > a:active {
+    top: 1px;
+}
+
+.form_step_slider > a:focus {
+    background: #000;
+}
+
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
