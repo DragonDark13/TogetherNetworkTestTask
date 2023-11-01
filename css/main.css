@@ -19,6 +19,21 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "OpenSans";
+    src: url(../fonts/openSans/OpenSans-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url(../fonts/openSans/OpenSans-Bold.ttf);
+    font-weight: bold;
+    font-style: normal;
+}
+
+
 * {
     box-sizing: border-box;
 }
@@ -38,6 +53,11 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
 }
 
 
@@ -144,6 +164,7 @@ h2 {
     font-size: 36px;
     font-family: "Proxima Nova", Arial, sans-serif;
     font-weight: 300;
+    letter-spacing: 3.9px;
 }
 
 h1, h2 {
@@ -215,11 +236,50 @@ h1, h2 {
     opacity: 1;
 }
 
+main {
+    margin-top: 219px;
+}
+
 .form_step_slider {
-    width: 300px;
+    width: 100%;
     text-align: center;
     overflow: hidden;
+    margin-top: 39px;
 }
+
+.form_step_slider .slider_next_btn {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1;
+    padding-left: 20px;
+    padding-right: 39px;
+    position: relative;
+    overflow: hidden;
+}
+
+.form_step_slider .slider_next_btn img {
+    position: absolute;
+    right: 13px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.form_step_slider .arrow_preview_btn {
+    width: 40px;
+    height: 40px;
+}
+
+.form_step_slider .arrow_preview_btn img {
+    opacity: 0.5;
+    transition: all 0.3s;
+}
+
+.form_step_slider .arrow_preview_btn:hover img {
+    opacity: 1;
+}
+
 
 .slides {
     display: flex;
@@ -254,11 +314,10 @@ h1, h2 {
 .slides > div {
     scroll-snap-align: start;
     flex-shrink: 0;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 90px;
     margin-right: 50px;
-    border-radius: 10px;
-    background: #eee;
+
     transform-origin: center center;
     transform: scale(1);
     transition: transform 0.5s;
@@ -267,12 +326,8 @@ h1, h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 100px;
 }
 
-.slides > div:target {
-    /*   transform: scale(0.8); */
-}
 
 .author-info {
     background: rgba(0, 0, 0, 0.75);
@@ -290,14 +345,6 @@ h1, h2 {
     color: white;
 }
 
-.form_step_slider img {
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
 .form_step_slider > a {
     display: inline-flex;
@@ -320,8 +367,64 @@ h1, h2 {
     background: #000;
 }
 
-
-html, body {
-    height: 100%;
-    overflow: hidden;
+.dropdown_container {
+    font-family: "Open Sans", Arial, sans-serif;
+    border-radius: 4px;
+    /*background-color: rgba(225, 230, 235, .5);*/
+    width: 360px;
+    padding: 4px;
+    margin: 0 30px;
+    position: relative;
 }
+
+
+
+.dropdown_container .dropdown_area {
+    border-radius: 4px;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+
+}
+
+.dropdown_container.actve .dropdown_area {
+    background-color: rgb(255, 255, 255);
+}
+
+.dropdown_icon {
+    position: absolute;
+    right: 20px;
+
+}
+
+.dropdown_container .dropdown_label {
+    color: #fff;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 6px;
+    font-size: 18px;
+}
+
+
+
+
+.dropdown_container.active .dropdown_label {
+    font-size: 14px;
+}
+
+.dropdown_container .dropdown_input {
+    font-size: 18px;
+    color: #6e747c;
+    line-height: 1.2;
+    text-align: center;
+    display: none;
+}
+
