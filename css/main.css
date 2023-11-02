@@ -283,6 +283,8 @@ main {
 
 .slides {
     display: flex;
+    position: relative;
+    height: 130px;
 
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -311,7 +313,12 @@ main {
     background: transparent;
 }
 
+.slides > input {
+    display: none;
+}
+
 .slides > div {
+    position: absolute;
     scroll-snap-align: start;
     flex-shrink: 0;
     width: 100%;
@@ -319,34 +326,38 @@ main {
     margin-right: 50px;
 
     transform-origin: center center;
-    transform: scale(1);
-    transition: transform 0.5s;
-    position: relative;
+    /*transform: scale(1);*/
+    /*transition: transform 0.5s;*/
+    /*position: relative;*/
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transform: translateX(-100%) scale(0);
+    -moz-transform: translateX(-100%)  scale(0);
+    -webkit-transform: translateX(-100%)  scale(0);
+
+    transition: transform .7s ease-in-out, opacity 0.3s ease-in;
+    -moz-transition: transform .7s ease-in-out, opacity 0.3s ease-in;
+    -webkit-transition: transform .7s ease-in-out, opacity 0.3s ease-in;
+    opacity: 0;
+}
+
+.slides >input:checked + div{
+    opacity: 1;
+
+    transform:translateX(0%) scale(1);
+    -moz-transform:translateX(0%) scale(1);
+    -webkit-transform:translateX(0%) scale(1);
+
+    transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
 }
 
 
-.author-info {
-    background: rgba(0, 0, 0, 0.75);
-    color: white;
-    padding: 0.75rem;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    margin: 0;
-}
-
-.author-info a {
-    color: white;
-}
-
-
-.form_step_slider > a {
+.form_step_slider .slider_progress_bar > a {
     display: inline-flex;
     width: 1.5rem;
     height: 1.5rem;
@@ -359,11 +370,15 @@ main {
     position: relative;
 }
 
-.form_step_slider > a:active {
+.form_step_slider .slider_progress_bar > a:active {
     top: 1px;
 }
 
-.form_step_slider > a:focus {
+.form_step_slider .slider_progress_bar > a:focus {
+    background: #000;
+}
+
+.form_step_slider .slider_progress_bar > a:active {
     background: #000;
 }
 
@@ -376,7 +391,6 @@ main {
     margin: 0 30px;
     position: relative;
 }
-
 
 
 .dropdown_container .dropdown_area {
@@ -414,8 +428,6 @@ main {
 }
 
 
-
-
 .dropdown_container.active .dropdown_label {
     font-size: 14px;
 }
@@ -425,6 +437,10 @@ main {
     color: #6e747c;
     line-height: 1.2;
     text-align: center;
+    display: none;
+}
+
+.dropdown_container .dropdown_list {
     display: none;
 }
 
