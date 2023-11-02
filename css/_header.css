@@ -1,0 +1,51 @@
+
+.header {
+    padding: 34px 0;
+}
+
+.header_content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_log_in_form_container form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: calc(-13px * 2);
+}
+
+.header_log_in_form_container .forgot_password_link {
+    margin-top: 13px;
+    display: block;
+}
+
+.header_log_in_form_container .input_container {
+    margin-right: 13px;
+    position: relative;
+}
+
+.header_log_in_form_container .input_container .invalid_message {
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 4px;
+    background-color: #E22A32FF;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    /*height: 35px;*/
+    padding: 11px 10px 13px;
+    margin-top: 5px;
+    pointer-events: none;
+    /*display: none;*/
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.header_log_in_form_container .input_container input:invalid + .invalid_message {
+    /*display: block;*/
+    opacity: 1;
+}

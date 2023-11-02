@@ -1,0 +1,150 @@
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    background-image: url(../images/clouds-cold-dark-540518.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.bg_color_overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+    pointer-events: none;
+}
+
+input {
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    max-width: 200px;
+    height: 40px;
+    color: rgb(110, 116, 124);
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: left;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+    padding: 12px 15px;
+    transition: all 0.7s;
+}
+
+
+a {
+    font-size: 11px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+    line-height: 1.2;
+}
+
+button {
+    border-radius: 4px;
+    background-image: -moz-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    background-image: -webkit-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    background-image: -ms-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    /*width: 80px;*/
+    height: 40px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.308;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    color: #fff;
+    padding: 12px 20px;
+}
+
+button:hover {
+    border-radius: 4px;
+    background-image: -moz-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    background-image: -webkit-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    background-image: -ms-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    box-shadow: 0px 1px 17px 0px rgba(43, 160, 234, 0.66);
+}
+
+.outline-btn {
+    height: 40px;
+    background: transparent;
+    font-size: 13px;
+    line-height: 1.308;
+    position: relative;
+    overflow: hidden;
+}
+
+.outline-btn .btn_outline {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-width: 2px;
+    border-color: #fff;
+    border-style: solid;
+    border-radius: 4px;
+    background: transparent;
+    opacity: 1;
+
+}
+
+.outline-btn:hover .btn_outline {
+    opacity: 0;
+}
+
+
+h1 {
+    font-size: 38px;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    color: #83A6E4FF;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 36px;
+    font-family: "Proxima Nova", Arial, sans-serif;
+    font-weight: 300;
+    letter-spacing: 3.9px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 992px) {
+
+    .container {
+        max-width: 960px;
+    }
+
+}
+
+main {
+    margin-top: 219px;
+}

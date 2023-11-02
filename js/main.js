@@ -1,6 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-
-
+document.addEventListener('DOMContentLoaded', () => {
     const dropdownValues = [
         {
             label: "Who are you?",
@@ -23,33 +21,43 @@ document.addEventListener('DOMContentLoaded', function () {
             options: ["Software Developer", "UI/UX Designer", "Digital Marketer"]
         }
     ];
-    const stepSlider = document.querySelector('.form_step_slider');
-    const slidesContainer = stepSlider.querySelector('.slides');
-    const slidesProgressBar = stepSlider.querySelector('.slider_progress_bar')
 
-    // Об'єкти із значеннями для кожного слайда
+    createSliderForDropDown(dropdownValues);
+    document.querySelector('.dropdown_area').addEventListener('click', (event) => {
+        const dropdownArea = event.target.closest('.dropdown_area');
+        if (dropdownArea) {
+            const dropdownContainer = dropdownArea.parentNode;
+            dropdownContainer.classList.toggle('open');
+        }
+    });
 
-    const numberOfSlides = dropdownValues.length;
+    function createSliderForDropDown(dropdownValues) {
+        const stepSlider = document.querySelector('.form_step_slider');
+        const slidesContainer = stepSlider.querySelector('.slides');
+        const slidesProgressBar = stepSlider.querySelector('.slider_progress_bar')
 
-    for (let i = 1; i <= numberOfSlides; i++) {
-        // Створюємо новий слайд
-
-
-        // newCheckbox.style.display = "none";
-
-
-        const newSlide = document.createElement('div');
-        newSlide.id = `slide-${i}`;
-
-        let newSliderAnchor = i === 1 ? `slide-${i}` : `slide-${i - 1}`;
+        const numberOfSlides = dropdownValues.length;
 
 
-        // Вміст нового слайду
-        newSlide.innerHTML = `
-    <a href="#${newSliderAnchor}" class="arrow_preview_btn">
+        const createSlide = (i) => {
+            const newSlide = createSlideElement(i);
+            const newCheckbox = createCheckbox(i);
+            const newSliderDot = createSliderDot(i);
+
+            slidesContainer.insertBefore(newCheckbox, slidesProgressBar);
+            slidesContainer.insertBefore(newSlide, slidesProgressBar);
+            slidesProgressBar.appendChild(newSliderDot);
+        }
+
+        const createSlideElement = (i) => {
+            const newSlide = document.createElement('div');
+            newSlide.className = "slide";
+            newSlide.id = `slide-${i}`;
+            newSlide.innerHTML = `
+    <a href="#${getSliderAnchor(i)}" class="arrow_preview_btn">
       <img src="images/prev_arrow_icon.svg" alt="prev_arrow_icon">
     </a>
-    <div class="dropdown_container dropdown_step${i} active">
+    <div class="dropdown_container dropdown_step${i}">
       <div class="dropdown_area">
         <div class="dropdown_label">${dropdownValues[i - 1].label}</div>
         <div class="dropdown_input">${dropdownValues[i - 1].options[0]}</div>
@@ -64,31 +72,38 @@ document.addEventListener('DOMContentLoaded', function () {
       <img src="./images/arrow_next_icon.svg" alt="arrow_next_icon">
     </button>
   `;
+            return newSlide;
+        }
 
-        let slideCheckBoxId = `slide-checkbox-${i}`;
+        const createCheckbox = (i) => {
+            const newCheckbox = document.createElement('input');
+            newCheckbox.type = "radio";
+            newCheckbox.id = `slide-checkbox-${i}`;
+            newCheckbox.name = "slide_checkbox";
+            newCheckbox.checked = i === 1;
+            return newCheckbox;
+        }
 
-        const newSliderDot = document.createElement('label');
-        newSliderDot.setAttribute('for', slideCheckBoxId);
-        newSliderDot.textContent = i;
-        slidesProgressBar.appendChild(newSliderDot);
-        // Додаємо новий слайд до контейнера слайдів
-        const newCheckbox = document.createElement('input');
-        newCheckbox.type = "radio";
-        newCheckbox.id = slideCheckBoxId;
-        newCheckbox.name = `slide_checkbox`;
-        slidesContainer.appendChild(newCheckbox);
-        slidesContainer.appendChild(newSlide);
+        const createSliderDot = (i) => {
+            const newSliderDot = document.createElement('label');
+            newSliderDot.setAttribute('for', `slide-checkbox-${i}`);
+            return newSliderDot;
+        }
 
-        // Додаємо посилання до контейнера progress-bar
+        const getSliderAnchor = (i) => {
+            return i === 1 ? `slide-${i}` : `slide-${i - 1}`;
+        }
 
-    }
+        const generateDropdownOptions = (slideNumber) => {
+            const options = dropdownValues[slideNumber - 1].options.map((value) => `
+      <li class="dropdown_list_item" data-dropdown-item="${value}">${value}</li>
+    `);
 
-// Функція для генерації варіантів дропдауну
-    function generateDropdownOptions(slideNumber) {
-        const options = dropdownValues[slideNumber - 1].options.map((value) => `
-    <li class="dropdown_list_item" data-dropdown-item="${value}">${value}</li>
-  `);
+            return options.join('');
+        }
 
-        return options.join('');
+        for (let i = 1; i <= numberOfSlides; i++) {
+            createSlide(i);
+        }
     }
 });

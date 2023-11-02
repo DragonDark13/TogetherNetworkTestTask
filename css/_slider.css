@@ -1,0 +1,148 @@
+
+.form_step_slider {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 39px;
+}
+
+.form_step_slider .slider_next_btn {
+    font-family: "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1;
+    padding-left: 20px;
+    padding-right: 39px;
+    position: relative;
+    overflow: hidden;
+}
+
+.form_step_slider .slider_next_btn img {
+    position: absolute;
+    right: 13px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.form_step_slider .arrow_preview_btn {
+    width: 40px;
+    height: 40px;
+}
+
+.form_step_slider .arrow_preview_btn img {
+    opacity: 0.5;
+    transition: all 0.3s;
+}
+
+.form_step_slider .arrow_preview_btn:hover img {
+    opacity: 1;
+}
+
+
+.slides {
+    display: flex;
+    position: relative;
+    height: 130px;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    /*
+    scroll-snap-points-x: repeat(300px);
+    scroll-snap-type: mandatory;
+    */
+}
+
+.slides::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.slides::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 10px;
+}
+
+.slides::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.slides > input {
+    display: none;
+}
+
+
+.slides > .slide {
+    position: absolute;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    margin-right: 50px;
+
+    transform-origin: center center;
+    /*transform: scale(1);*/
+    /*transition: transform 0.5s;*/
+    /*position: relative;*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: translateX(-100%) scale(0);
+    -moz-transform: translateX(-100%) scale(0);
+    -webkit-transform: translateX(-100%) scale(0);
+
+    transition: transform .7s ease-in-out, opacity 0.3s ease-in;
+    -moz-transition: transform .7s ease-in-out, opacity 0.3s ease-in;
+    -webkit-transition: transform .7s ease-in-out, opacity 0.3s ease-in;
+    opacity: 0;
+}
+
+.slides > input:checked + .slide {
+    opacity: 1;
+
+    transform: translateX(0%) scale(1);
+    -moz-transform: translateX(0%) scale(1);
+    -webkit-transform: translateX(0%) scale(1);
+
+    transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+}
+
+.form_step_slider .slider_progress_bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    position: absolute;
+    height: auto;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.form_step_slider .slider_progress_bar > label {
+    border-width: 2px;
+    border-color: #fff;
+    border-style: solid;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    display: block;
+    margin: 0 calc(15px / 2);
+}
+
+.form_step_slider .slides > input:nth-of-type(1):checked ~ .slider_progress_bar > *:nth-child(1),
+.form_step_slider .slides > input:nth-of-type(2):checked ~ .slider_progress_bar > *:nth-child(2),
+.form_step_slider .slides > input:nth-of-type(3):checked ~ .slider_progress_bar > *:nth-child(3),
+.form_step_slider .slides > input:nth-of-type(4):checked ~ .slider_progress_bar > *:nth-child(4),
+.form_step_slider .slides > input:nth-of-type(5):checked ~ .slider_progress_bar > *:nth-child(5) {
+    background: #fff;
+}
