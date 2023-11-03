@@ -152,3 +152,28 @@ h1, h2 {
 main {
     margin-top: 219px;
 }
+
+.input_container {
+    position: relative;
+}
+
+.input_container .invalid_message {
+    font-size: 11px;
+    line-height: 1;
+    border-radius: 4px;
+    background-color: #E22A32FF;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    /*height: 35px;*/
+    padding: 11px 10px 13px;
+    margin-top: 5px;
+    pointer-events: none;
+    /*display: none;*/
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.input_container input:invalid:focus ~ .invalid_message {
+    opacity: 1;
+}

@@ -1,0 +1,112 @@
+.slider_input_container {
+    font-family: "Open Sans", Arial, sans-serif;
+    width: 360px;
+    padding: 4px;
+    margin: 0 30px;
+    position: relative;
+}
+
+.slider_input_container.active:after,
+.slider_input_container:focus:after {
+    position: absolute;
+    background-color: rgba(225, 230, 235, .5);
+    width: 100%;
+    height: 90px;
+    left: 0;
+    bottom: 0px;
+    content: '';
+    border-radius: 4px;
+    z-index: -1;
+}
+
+.dropdown_container .dropdown_label {
+    color: #fff;
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    font-size: 18px;
+}
+
+.slider_input_container input {
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.slider_input_container [type="password"] {
+    letter-spacing: 2px;
+}
+
+.slider_input_container .custom_label {
+    position: absolute;
+    left: 0;
+    width: calc(100% - 8px);
+    height: 100%;
+    top: 0;
+    text-align: center;
+    bottom: 0;
+    margin: auto;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-weight: bold;
+    line-height: 1.2;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.slider_input_container input {
+    border-radius: 4px;
+    height: 55px;
+    justify-content: center;
+    /*overflow: hidden;*/
+    background-color: rgba(255, 255, 255, 0.5);
+
+
+    font-size: 18px;
+    color: #6e747c;
+    line-height: 1.2;
+
+}
+
+.slider_input_container input:focus,
+.slider_input_container.filled input {
+    background-color: rgb(255, 255, 255);
+}
+
+.slider_input_container .input_bg_block {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.slider_input_container input:focus ~ .input_bg_block,
+.slider_input_container.filled .input_bg_block {
+    position: absolute;
+    background-color: rgba(225, 230, 235, .5);
+    width: 100%;
+    height: 90px;
+    left: 0;
+    bottom: 0;
+    border-radius: 4px;
+    z-index: -1;
+    opacity: 1;
+}
+
+.slider_input_container input:focus ~ .custom_label,
+.slider_input_container.filled .custom_label {
+    font-size: 14px;
+    transform: translateY(-42px);
+    /*position: absolute;*/
+    transition: all 0.5s ease-in-out;
+}
+
+.slider_input_container .invalid_message{
+    /*font-family: "Open Sans", Arial, sans-serif;*/
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
