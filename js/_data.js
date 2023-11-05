@@ -31,7 +31,7 @@ const textGenerated = function () {
 
 export const dropdownValues = [
     {
-        fieldName: 'role',
+        fieldName: 'gender',
         inputType: "dropdown",
         label: "Who are you?",
         options: ["Engineer", "Business Development Executive", "Office Manager/PA", "Accountant", "VR Designer"]
@@ -43,7 +43,7 @@ export const dropdownValues = [
         options: ageArray
     },
     {
-        fieldName: 'address',
+        fieldName: 'location',
         inputType: "text",
         label: "I am from",
         minLength: 15,

@@ -3,6 +3,8 @@ import {messagesText} from "./_data.js";
 export const createSlideElement = (number, stepSlideData, dataArrayLength) => {
     const newSlide = document.createElement('div');
     newSlide.setAttribute('data-current-step', number);
+    newSlide.setAttribute('data-current-name', stepSlideData.fieldName);
+    newSlide.setAttribute('data-current-value', "");
 
     newSlide.className = "slide";
     newSlide.id = `slide-${number}`;

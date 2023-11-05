@@ -4,6 +4,7 @@ import {headerInitFunction} from "./_header.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
+
     const sliderAddEventsFunction = () => {
         const sliderInputContainers = document.querySelectorAll('.slider_input_container');
         const passwordInput = document.getElementById('password');
@@ -15,15 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
             dropdownContainer.classList.add(open ? 'open' : 'closed');
 
             if (!open) {
-                const dropdownArea = dropdownContainer.querySelector('.dropdown_area');
 
                 const baseSlideContent = dropdownContainer.closest('.base_slide_content');
 
                 // Знайдіть кнопку "slider_next_btn" в батьківському елементі
                 const nextButton = baseSlideContent.querySelector('.slider_next_btn');
 
+                const currentSlide = dropdownContainer.closest('.slide');
+
                 // Активуйте або відключіть кнопку в залежності від значення dropdownInput
-                if (dropdownArea.dataset.dropdownValue.trim() !== "") {
+                if (currentSlide.dataset.currentValue.trim() !== "") {
                     nextButton.removeAttribute('disabled');
                 } else {
                     nextButton.setAttribute('disabled', 'disabled');
@@ -35,19 +37,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         };
 
+
         const handleDropdownAreaClick = (event) => {
             const dropdownArea = event.target.closest('.dropdown_area');
             if (dropdownArea) {
                 const dropdownContainer = dropdownArea.parentNode;
                 const dropdownInput = dropdownContainer.querySelector('.dropdown_input');
-                const selectedValue = dropdownArea.dataset.dropdownValue;
+                const currentSlide = dropdownArea.closest('.slide');
+                const selectedValue = currentSlide.dataset.currentValue;
 
                 if (selectedValue === "") {
                     const firstListItem = dropdownContainer.querySelector('.dropdown_list_item');
                     if (firstListItem) {
                         const firstValue = firstListItem.dataset.dropdownItem;
                         dropdownInput.textContent = firstValue;
-                        dropdownArea.dataset.dropdownValue = firstValue;
+                        currentSlide.dataset.currentValue = firstValue;
                         firstListItem.classList.add('selectedItem');
                     }
                 }
@@ -65,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const selectedValue = item.getAttribute('data-dropdown-item');
             const dropdownContainer = item.closest('.dropdown_container');
             const dropdownInput = dropdownContainer.querySelector('.dropdown_input');
-            const dropdownArea = dropdownContainer.querySelector('.dropdown_area');
+            const currentSlide = item.closest('.slide');
 
             dropdownContainer.querySelectorAll('.dropdown_list_item').forEach((listItem) => {
                 listItem.classList.remove('selectedItem');
@@ -73,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             item.classList.add('selectedItem');
             dropdownInput.textContent = selectedValue;
-            dropdownArea.dataset.dropdownValue = selectedValue;
+            currentSlide.dataset.currentValue = selectedValue;
 
             toggleDropdown(dropdownContainer, false);
         };
@@ -91,9 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const toNextStepFunc = (button) => {
             let step = Number(button.closest(".slide").dataset.currentStep);
-            let nextStep = step + 1;
-            const radioInput = document.querySelector(`#slide-checkbox-${nextStep}`);
-            radioInput.checked = true;
+            sendRequestData(step);
+
         }
 
         const handleInputEvent = (input, foundObject, messagesText, regFields) => {
@@ -107,6 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             nextButton.setAttribute('disabled', "disabled");
             input.classList.add("invalid");
+
+            input.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') {
+                    // Викликаємо клік на кнопці slider_next_btn
+                    const nextButton = input.closest('.base_slide_content').querySelector('.slider_next_btn');
+                    if (nextButton) {
+                        nextButton.click();
+                    }
+                }
+            });
 
             input.addEventListener('input', (event) => {
                 const value = input.value;
@@ -124,6 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     nextButton.removeAttribute('disabled');
                     input.classList.remove("invalid");
+                    const currentSlide = input.closest('.slide');
+                    currentSlide.dataset.currentValue = value;
                 }
             });
         };
@@ -162,6 +177,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
             handleInputEvent(input, foundObject, messagesText, regFields);
         });
+
+
+    }
+
+    const sendRequestData = (maxStep) => {
+        const slides = document.querySelectorAll('div[data-current-step]:not([data-current-step=""])');
+        const dataObject = {};
+
+        slides.forEach(slide => {
+            const currentStep = parseInt(slide.dataset.currentStep, 10);
+            if (currentStep <= maxStep) {
+                const currentName = slide.dataset.currentName;
+                const currentValue = (currentName === "age") ? Number(slide.dataset.currentValue) : slide.dataset.currentValue;
+
+                if (currentName && currentValue) {
+                    dataObject[currentName] = currentValue;
+                }
+            }
+        });
+
+
+        const jsonData = JSON.stringify(dataObject);
+
+        console.log(jsonData);
+
+
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "https://run.mocky.io/v3/f6ca495a-0a08-40de-9889-e73d49d011d2");
+
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                console.log("Відповідь від сервера:", response);
+                let nextStep = maxStep + 1;
+                const radioInput = document.querySelector(`#slide-checkbox-${nextStep}`);
+                radioInput.checked = true;
+            } else {
+                console.error("Помилка при виконанні запиту");
+                alert("Помилка при виконанні запиту");
+            }
+        };
+
+        xhr.send(jsonData);
 
     }
 
