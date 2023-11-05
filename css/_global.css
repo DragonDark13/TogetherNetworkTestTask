@@ -157,9 +157,18 @@ h2 {
     letter-spacing: 3.9px;
 }
 
-h1, h2 {
+h3 {
+    font-family: "Proxima Nova", Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #83A6E4FF;
+    letter-spacing: 1px;
+}
+
+h1, h2, h3 {
     text-align: center;
 }
+
 
 .container {
     width: 100%;
@@ -211,14 +220,63 @@ main {
     display: none;
 }
 
-::-webkit-input-placeholder { opacity: 1; -webkit-transition: opacity .5s; transition: opacity .5s; }  /* Chrome <=56, Safari < 10 */
-:-moz-placeholder { opacity: 1; -moz-transition: opacity .5s; transition: opacity .5s; } /* FF 4-18 */
-::-moz-placeholder { opacity: 1; -moz-transition: opacity .5s; transition: opacity .5s; } /* FF 19-51 */
-:-ms-input-placeholder { opacity: 1; -ms-transition: opacity .5s; transition: opacity .5s; } /* IE 10+ */
-::placeholder { opacity: 1; transition: opacity .5s; } /* Modern Browsers */
+::-webkit-input-placeholder {
+    opacity: 1;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
 
-*:focus::-webkit-input-placeholder { opacity: 0; } /* Chrome <=56, Safari < 10 */
-*:focus:-moz-placeholder { opacity: 0; } /* FF 4-18 */
-*:focus::-moz-placeholder { opacity: 0; } /* FF 19-50 */
-*:focus:-ms-input-placeholder { opacity: 0; } /* IE 10+ */
-*:focus::placeholder { opacity: 0; } /* Modern Browsers */
+/* Chrome <=56, Safari < 10 */
+:-moz-placeholder {
+    opacity: 1;
+    -moz-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+/* FF 4-18 */
+::-moz-placeholder {
+    opacity: 1;
+    -moz-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+/* FF 19-51 */
+:-ms-input-placeholder {
+    opacity: 1;
+    -ms-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+/* IE 10+ */
+::placeholder {
+    opacity: 1;
+    transition: opacity .5s;
+}
+
+/* Modern Browsers */
+
+*:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
+
+/* Chrome <=56, Safari < 10 */
+*:focus:-moz-placeholder {
+    opacity: 0;
+}
+
+/* FF 4-18 */
+*:focus::-moz-placeholder {
+    opacity: 0;
+}
+
+/* FF 19-50 */
+*:focus:-ms-input-placeholder {
+    opacity: 0;
+}
+
+/* IE 10+ */
+*:focus::placeholder {
+    opacity: 0;
+}
+
+/* Modern Browsers */

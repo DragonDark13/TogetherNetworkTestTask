@@ -185,7 +185,7 @@
     background-image: -ms-linear-gradient(61deg, rgb(76, 175, 80) 0%, rgb(60, 211, 66) 100%);
 }
 
-.form_step_container .btn_success:hover {
+.form_step_container .btn_success:not(:disabled):hover {
     background-image: -moz-linear-gradient(61deg, rgb(76, 175, 80) 0%, rgb(60, 211, 66) 100%);
     background-image: -webkit-linear-gradient(61deg, rgb(76, 175, 80) 0%, rgb(60, 211, 66) 100%);
     background-image: -ms-linear-gradient(61deg, rgb(76, 175, 80) 0%, rgb(60, 211, 66) 100%);
@@ -193,4 +193,6 @@
 }
 
 
-
+.success_registration_container{
+    margin-top: 50px;
+}

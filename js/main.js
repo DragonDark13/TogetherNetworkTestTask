@@ -213,9 +213,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (xhr.status === 200) {
                 const response = JSON.parse(xhr.responseText);
                 console.log("Відповідь від сервера:", response);
-                let nextStep = maxStep + 1;
-                const radioInput = document.querySelector(`#slide-checkbox-${nextStep}`);
-                radioInput.checked = true;
+
+                if (maxStep === dropdownValues.length ) {
+                    document.querySelector(".form_step_slider").classList.add("hidden");
+                    document.querySelector(".success_registration_container").classList.remove("hidden");
+                } else {
+                    let nextStep = maxStep + 1;
+                    const radioInput = document.querySelector(`#slide-checkbox-${nextStep}`);
+                    radioInput.checked = true;
+                }
+
+
             } else {
                 console.error("Помилка при виконанні запиту");
                 alert("Помилка при виконанні запиту");
