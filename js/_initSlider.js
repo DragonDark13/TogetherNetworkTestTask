@@ -37,9 +37,7 @@ export const initSliderForDropDown = (dropdownValues, callbackFunction) => {
     dropdownValues.forEach((stepSlideData, i) => {
         createSlide(stepSlideData, i + 1);
 
-        // Перевірка, чи це останній слайд
         if (i === dropdownValues.length - 1) {
-            // Викликаємо ваш callback після створення останнього слайда
 
             if (callbackFunction && typeof callbackFunction === 'function') {
                 callbackFunction();

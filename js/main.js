@@ -19,12 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const baseSlideContent = dropdownContainer.closest('.base_slide_content');
 
-                // Знайдіть кнопку "slider_next_btn" в батьківському елементі
                 const nextButton = baseSlideContent.querySelector('.slider_next_btn');
 
                 const currentSlide = dropdownContainer.closest('.slide');
 
-                // Активуйте або відключіть кнопку в залежності від значення dropdownInput
                 if (currentSlide.dataset.currentValue.trim() !== "") {
                     nextButton.removeAttribute('disabled');
                 } else {
@@ -113,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             input.addEventListener('keyup', (event) => {
                 if (event.key === 'Enter') {
-                    // Викликаємо клік на кнопці slider_next_btn
                     const nextButton = input.closest('.base_slide_content').querySelector('.slider_next_btn');
                     if (nextButton) {
                         nextButton.click();
@@ -159,12 +156,10 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => toNextStepFunc(btn))
         })
 
-// Додайте обробник подій для passwordInput
         passwordInput.addEventListener('input', (event) => {
-            event.target.value = event.target.value.replace(/ /g, ''); // Замініть всі пробіли на порожній рядок
+            event.target.value = event.target.value.replace(/ /g, '');
         });
 
-// Ітеруйтесь через кожен контейнер та додайте обробник подій для input
         sliderInputContainers.forEach((sliderInputContainer) => {
             const input = sliderInputContainer.querySelector('input');
             const fieldNameToFind = input.getAttribute('name');
