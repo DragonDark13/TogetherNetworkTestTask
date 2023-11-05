@@ -30,6 +30,11 @@
     /*overflow: hidden;*/
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown_container:not(.active) .dropdown_area:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .dropdown_container.active .dropdown_area {

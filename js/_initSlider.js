@@ -1,6 +1,6 @@
 import {createSlideElement} from "./_createSliderItem.js";
 
-export const initSliderForDropDown=(dropdownValues) =>{
+export const initSliderForDropDown = (dropdownValues, callbackFunction) => {
     const stepSlider = document.querySelector('.form_step_slider');
     const slidesContainer = stepSlider.querySelector('.slides');
     const slidesProgressBar = stepSlider.querySelector('.slider_progress_bar');
@@ -8,7 +8,7 @@ export const initSliderForDropDown=(dropdownValues) =>{
 
     const createSlide = (stepSlideData, number) => {
         let labelForAttribute = `slide-checkbox-${number}`
-        const newSlide = createSlideElement(number, stepSlideData,dropdownValues.length);
+        const newSlide = createSlideElement(number, stepSlideData, dropdownValues.length);
         const newCheckbox = createCheckbox(number, labelForAttribute);
         const newSliderDot = createSliderDot(number, labelForAttribute);
 
@@ -34,8 +34,17 @@ export const initSliderForDropDown=(dropdownValues) =>{
     }
 
 
+    dropdownValues.forEach((stepSlideData, i) => {
+        createSlide(stepSlideData, i + 1);
 
+        // Перевірка, чи це останній слайд
+        if (i === dropdownValues.length - 1) {
+            // Викликаємо ваш callback після створення останнього слайда
 
-    dropdownValues.forEach((stepSlideData, i) => createSlide(stepSlideData, i + 1));
+            if (callbackFunction && typeof callbackFunction === 'function') {
+                callbackFunction();
+            }
+        }
+    });
 
 }

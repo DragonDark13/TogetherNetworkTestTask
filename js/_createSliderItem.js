@@ -1,5 +1,9 @@
-export const createSlideElement = (number, stepSlideData,dataArrayLength) => {
+import {messagesText} from "./_data.js";
+
+export const createSlideElement = (number, stepSlideData, dataArrayLength) => {
     const newSlide = document.createElement('div');
+    newSlide.setAttribute('data-current-step', number);
+
     newSlide.className = "slide";
     newSlide.id = `slide-${number}`;
 
@@ -33,7 +37,12 @@ export const createSlideElement = (number, stepSlideData,dataArrayLength) => {
     if (stepSlideData.additionalText) {
         let additionalSlideTextBlock = document.createElement("div");
         additionalSlideTextBlock.className = "additional_slide_text_block"
-        additionalSlideTextBlock.innerText = stepSlideData.additionalText;
+
+        if (typeof stepSlideData.additionalText === "object") {
+            additionalSlideTextBlock.appendChild(stepSlideData.additionalText)
+        } else {
+            additionalSlideTextBlock.innerText = stepSlideData.additionalText;
+        }
         newSlide.appendChild(additionalSlideTextBlock)
 
     }
@@ -41,7 +50,6 @@ export const createSlideElement = (number, stepSlideData,dataArrayLength) => {
 
     return newSlide;
 }
-
 
 
 const createPrevButton = (number) => {
@@ -68,6 +76,8 @@ const createButtonForSlider = (className = "", btnText = `Next step`, iconSrc = 
         icon.alt = 'icon';
         nextButton.appendChild(icon)
     }
+
+    nextButton.disabled = true;
 
 
     return nextButton;
@@ -126,12 +136,14 @@ export const createTextInput = (stepSlideData) => {
         return label;
     };
 
-    const createInput = (inputType, fieldName) => {
+    const createInput = ({inputType, fieldName, minLength = 10, maxLength = 15}) => {
         const input = document.createElement("input");
         input.type = inputType;
         input.id = fieldName;
         input.name = fieldName;
-        input.maxLength = 20;
+        input.minLength = minLength;
+        input.maxLength = maxLength;
+        input.required = true;
         return input;
     };
 
@@ -150,8 +162,8 @@ export const createTextInput = (stepSlideData) => {
 
     const newTextInputContainer = createContainer(stepSlideData.fieldName);
     const label = createLabel(stepSlideData.label);
-    const input = createInput(stepSlideData.inputType, stepSlideData.fieldName);
-    const invalidMessage = createInvalidMessage("Невірний ввід");
+    const input = createInput(stepSlideData);
+    const invalidMessage = createInvalidMessage(messagesText.emptyFieldMessage);
     const newInputBgBlock = createInputBgBlock();
 
     const updateInputState = () => {

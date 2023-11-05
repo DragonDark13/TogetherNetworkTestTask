@@ -76,6 +76,10 @@ button {
     outline: none;
     color: #fff;
     padding: 12px 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 button:hover {
@@ -84,6 +88,28 @@ button:hover {
     background-image: -webkit-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
     background-image: -ms-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
     box-shadow: 0px 1px 17px 0px rgba(43, 160, 234, 0.66);
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+button:disabled:hover {
+    background-image: -moz-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    background-image: -webkit-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    background-image: -ms-linear-gradient(61deg, rgb(88, 102, 234) 0%, rgb(43, 160, 234) 100%);
+    box-shadow: none;
+}
+
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+
+button, html [type=button] {
+    -webkit-appearance: button;
 }
 
 .outline-btn {
@@ -158,6 +184,8 @@ main {
 }
 
 .input_container .invalid_message {
+    display: block;
+
     font-size: 11px;
     line-height: 1;
     border-radius: 4px;
@@ -174,6 +202,11 @@ main {
     transition: all 0.3s;
 }
 
-.input_container input:invalid:focus ~ .invalid_message {
+.input_container input:invalid ~ .invalid_message,
+.input_container input.invalid ~ .invalid_message {
     opacity: 1;
+}
+
+.hidden {
+    display: none;
 }

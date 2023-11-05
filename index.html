@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-<!--    <link rel="stylesheet" href="css/reset.css">-->
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js" type="module" defer></script>
 </head>
@@ -12,23 +11,27 @@
 <header class="header">
     <div class="header_content container">
         <div class="header_logo"><img src="./images/logo.svg" alt="logo"></div>
-        <div class="header_log_in_form_container" style="display: none">
-            <form action="">
-                <div class="input_container">
-                    <input placeholder="Email" type="email" name="email" id="email">
-                    <div class="invalid_message">
+        <div class="header_log_in_form_container hidden">
+            <div class="form">
+                <label class="input_container">
+                    <input maxlength="30" minlength="3" required placeholder="Email" type="email" name="email"
+                           id="email_in_login_form">
+                    <span class="invalid_message">
                         Please enter a valid email address
-                    </div>
-                </div>
-                <div class="input_container">
-                    <input type="password" placeholder="Password" name="Password"
-                           id="password">
+                    </span>
+                </label>
+                <label class="input_container">
+                    <input maxlength="20" minlength="10" required type="password" placeholder="Password" name="Password"
+                           id="password_in_login_form">
                     <a class="forgot_password_link" href="/">Forgot your password?</a>
-                </div>
-                <button type="submit">Log in</button>
-            </form>
+                    <span class="invalid_message">
+                        Please enter a valid email address
+                    </span>
+                </label>
+                <button disabled type="button" class="log_in_btn_in_form">Log in</button>
+            </div>
         </div>
-        <button class="outline-btn">
+        <button class="outline-btn log_in_btn">
             <span class="btn_outline"></span>
             Log in
         </button>
@@ -45,58 +48,11 @@
 
                 <div class="slides">
 
-                    <!--                    <div id="slide-1">-->
-                    <!--                        <a href="#slide-1" class="arrow_preview_btn">-->
-                    <!--                            <img src="images/prev_arrow_icon.svg" alt="prev_arrow_icon">-->
-                    <!--                        </a>-->
-                    <!--                        <div class="dropdown_container dropdown_step1 active">-->
-                    <!--                            <div class="dropdown_area">-->
-                    <!--                                <div class="dropdown_label">Who are you?</div>-->
-                    <!--                                <div class="dropdown_input">Engineer</div>-->
-                    <!--                                <div class="dropdown_icon"><img src="./images/arrowDropdown.svg" alt="arrowDropdown">-->
-                    <!--                                </div>-->
-                    <!--                            </div>-->
-                    <!--                            <ul class="dropdown_list">-->
-                    <!--                                <li class="dropdown_list_item">Business Development Executive</li>-->
-                    <!--                                <li class="dropdown_list_item">Office Manager/PA</li>-->
-                    <!--                                <li class="dropdown_list_item">Accountant</li>-->
-                    <!--                                <li class="dropdown_list_item">VR Designer</li>-->
-                    <!--                                <li class="dropdown_list_item">Engineer</li>-->
-                    <!--                            </ul>-->
-                    <!--                        </div>-->
-                    <!--                        <button class="slider_next_btn">-->
-                    <!--                            Next step-->
-                    <!--                            <img src="./images/arrow_next_icon.svg" alt="arrow_next_icon">-->
-                    <!--                        </button>-->
 
-                    <!--                    </div>-->
-                    <!--                    <div id="slide-2">-->
-                    <!--                        <a href="#slide-1">2</a>-->
-                    <!--                        2-->
-                    <!--                    </div>-->
-                    <!--                    <div id="slide-3">-->
-                    <!--                        3-->
-                    <!--                    </div>-->
-                    <!--                    <div id="slide-4">-->
-                    <!--                        4-->
-                    <!--                    </div>-->
-                    <!--                    <div id="slide-5">-->
-                    <!--                        5-->
-                    <!--                        <button class="slider_start_btn">Start now</button>-->
-                    <!--                    </div>-->
                     <div class="slider_progress_bar">
-                        <!--                    <a href="#slide-1">1</a>-->
-                        <!--                    <a href="#slide-2">2</a>-->
-                        <!--                    <a href="#slide-3">3</a>-->
-                        <!--                    <a href="#slide-4">4</a>-->
-                        <!--                    <a href="#slide-5">5</a>-->
+
                     </div>
                 </div>
-                <!--                <p class="privacy_text">-->
-                <!--                    By clicking the button above you agree to our <a href="/">Terms of Use</a>-->
-                <!--                    and <a href="/">Privacy Policy</a> including use of cookies and to receive newsletters,-->
-                <!--                    account updates and offers sent by StarCompany.-->
-                <!--                </p>-->
 
 
             </div>
